@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const authRoute = require("./routes/auth");
 const authUser = require("./routes/user");
 const authPost = require("./routes/posts");
+const authCat = require("./routes/categories");
 
 dotenv.config();
 app.use(express.json());
@@ -19,6 +20,7 @@ mongoose
 app.use("/auth", authRoute);
 app.use("/user", authUser);
 app.use("/post", authPost);
+app.use("/cat", authCat);
 
 app.listen("3001", () => {
   console.log("listening on port");
