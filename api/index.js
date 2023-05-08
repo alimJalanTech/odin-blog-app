@@ -26,19 +26,20 @@ mongoose
   .then(console.log("Connected to Mongoose"))
   .catch((error) => console.error(error));
 
-const storage = multer.diskStorage({
-  destination: (req, file, callb) => {
-    callb(null, "images");
-  },
-  filename: (req, file, callb) => {
-    //callb(null, "file.png")
-    callb(null, req.body.name);
-  },
-});
-const upload = multer({ storage: storage });
-app.post("/upload", upload.single("file"), (req, res) => {
-  res.status(200).json("File has been uploaded");
-});
+/* Pending Image Upload Part*/
+// const storage = multer.diskStorage({
+//   destination: (req, file, callb) => {
+//     callb(null, "images");
+//   },
+//   filename: (req, file, callb) => {
+//     //callb(null, "file.png")
+//     callb(null, req.body.name);
+//   },
+// });
+// const upload = multer({ storage: storage });
+// app.post("/upload", upload.single("file"), (req, res) => {
+//   res.status(200).json("File has been uploaded");
+// });
 
 app.use("/auth", authRoute);
 app.use("/user", authUser);
