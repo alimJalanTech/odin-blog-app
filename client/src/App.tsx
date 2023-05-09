@@ -1,32 +1,36 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import "./App.css";
-
-interface Post {
-  _id: string;
-  title: string;
-  content: string;
-}
+import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import Home from "./components/Home";
+import Login from "./components/Login";
+import Account from "./components/Account";
 
 interface AppProps {}
 
 const App: React.FC<AppProps> = (props: AppProps) => {
-  const [posts, setPosts] = useState<Post[]>([]);
-
-  useEffect(() => {
-    axios.get<Post[]>("http://localhost:3001/post").then((response) => {
-      setPosts(response.data);
-    });
-  }, []);
   return (
-    <div className="post-container">
-      {posts.map((post) => (
-        <div key={post._id} className="post">
-          <h2>{post.title}</h2>
-          <p>{post.content}</p>
-        </div>
-      ))}
-    </div>
+    <>
+      <Router>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/login">Login</Link>
+            </li>
+            <li>
+              <Link to="/account">Account</Link>
+            </li>
+          </ul>
+        </nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/account" element={<Account />} />
+        </Routes>
+      </Router>
+    </>
   );
 };
 
