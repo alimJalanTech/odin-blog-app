@@ -1,3 +1,10 @@
+import React from "react";
+
+const Login: React.FC = () => {
+  return <div>Hello</div>;
+};
+
+export default Login;
 import axios from "axios";
 import React, { useState } from "react";
 

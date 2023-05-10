@@ -42,7 +42,7 @@ const App: React.FC<AppProps> = (props: AppProps) => {
           <Route path="/account" element={<Account />} />
           <Route path="/register" element={<Register />} />
           <Route path="/post/:id" element={<DetailsPages />} />
-          <Route path="/post" element={<Create />} />
+          <Route path="/" element={<Create />} />
         </Routes>
       </Router>
     </>
